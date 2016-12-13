@@ -2,6 +2,12 @@
 
 node { 
 	stage('build') {
-	    echo 'Hello World'
+	    checkout scm
+	    sh 'npm install'
+	    sh 'npm run build'
+	}
+
+	stage('test') {
+		sh 'CI=true npm run test'
 	}
 }
